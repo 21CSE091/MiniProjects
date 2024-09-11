@@ -1,0 +1,62 @@
+public class FINAL extends javax.swing.JFrame { public FINAL() {
+initComponents();
+}
+@SuppressWarnings("unchecked")
+// &lt;editor-fold defaultstate="collapsed" desc="Generated Code"&gt;
+private void initComponents() { jPanel1 = new javax.swing.JPanel(); jLabel1 = new javax.swing.JLabel(); jLabel2 = new javax.swing.JLabel();
+jTextField1 = new javax.swing.JTextField(); jLabel3 = new javax.swing.JLabel(); jTextField2 = new javax.swing.JTextField(); jLabel4 = new javax.swing.JLabel(); jLabel5 = new javax.swing.JLabel(); jLabel6 = new javax.swing.JLabel(); jTextField3 = new javax.swing.JTextField(); jButton1 = new javax.swing.JButton(); jButton2 = new javax.swing.JButton();
+setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE); jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+jLabel1.setText(" EMPLOYEE PAYROLL");
+jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+jLabel2.setText("EMP_ID");
+jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+jLabel3.setText("EMP_NAME"); jTextField2.addActionListener(new java.awt.event.ActionListener() { public void actionPerformed(java.awt.event.ActionEvent evt) { jTextField2ActionPerformed(evt);
+}
+
+
+
+});
+jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+jLabel4.setText("SALARY FOR ONE DAY : 500");
+
+jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+jLabel5.setText("ONE DAY SALARY FOR PART TIME : 250"); jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+jLabel6.setText("SALARY");
+jButton1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+jButton1.setText("PAY"); jButton1.addActionListener(new java.awt.event.ActionListener() { public void actionPerformed(java.awt.event.ActionEvent evt) { jButton1ActionPerformed(evt);
+}
+});
+jButton2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+jButton2.setText("NEXT"); jButton2.addActionListener(new java.awt.event.ActionListener() { public void actionPerformed(java.awt.event.ActionEvent evt) { jButton2ActionPerformed(evt);
+}
+});
+pack();
+}// &lt;/editor-fold&gt;
+private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {
+// TODO add your handling code here:
+}
+private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+// TODO add your handling code here:
+String s1=jTextField1.getText(); int a=Integer.parseInt(s1);
+int l = 0,p=0,s=0,leave,parttime,i=0,n; String q;
+try{ Connection c
+=DriverManager.getConnection("jdbc:derby://localhost:1527/salary"); Statement st=c.createStatement();
+ResultSet rs=st.executeQuery("select empid,leave_days,parttime_days,salary,empname from payroll"); while(rs.next()){
+i=rs.getInt(1); l=rs.getInt(2); p=rs.getInt(3);
+
+
+
+
+ 
+s=rs.getInt(4); q=rs.getString(5); if(i==a)
+{
+leave=l*500; parttime=p*250; s=s+parttime; s=s-leave;
+String r=String.valueOf(s); jTextField3.setText(r); jTextField2.setText(q);
+System.out.println("the detail of employee paid is "); System.out.println("NAME : "+q); System.out.println("EMPLOYEE_ID : "+i); System.out.println("SALARY : "+r);
+//System.out.println(r);
+}
+}
+}
+catch(Exception ex){ System.out.println(ex);
+}
+}
